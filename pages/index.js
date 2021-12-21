@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 import Prismic from 'prismic-reactjs'
+import Prismic from '@prismicio/client'
 
 export default function Home(props) {
   return (
@@ -20,12 +21,6 @@ export default function Home(props) {
   )
 }
 
-export async function getServerSideProps({ res }) {
-  const client = Prismic.client('https://testeblogff.prismic.io/api/v2')
-  const posts = await client.query(Prismic.Predicates.at('document.type', 'posts'))
-  return {
-    props: {
-      posts: product.posts,
-    },
-  }
+export async function getStaticProps() {
+  
 }
