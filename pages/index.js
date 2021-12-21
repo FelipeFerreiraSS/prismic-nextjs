@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-import Prismic from 'prismic-reactjs'
 import Prismic from '@prismicio/client'
+
+import getPrismicClient from '../services/prismic.js'
 
 export default function Home(props) {
   return (
@@ -22,5 +23,16 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-  
+  const prismic = getPrismicClient()
+
+  const projetcResponse = await prismic.query(
+    [Prismic.Predicates.at('document.type', 'posts')], 
+    { orderings: '[document.first_publication_date desc]' }
+  )
+
+  console.log(projetcResponse)
+
+  return {
+    props: {}
+  }
 }
