@@ -25,7 +25,7 @@ export default function Home({ page }) {
           {RichText.asText(page.data.resumo)}
         </p>
 
-        {/*<img src={page.data.imagem.url} alt="">*/}
+        <img src={page.data.imagem.url} alt=""/>
 
         <div>
           <RichText render={page.data.post} />
